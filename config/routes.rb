@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   # patch 'movies/:id' => 'movies#update'
 
   resources :movies
+  resources :reviews
 end
