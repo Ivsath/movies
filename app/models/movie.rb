@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Movie < ApplicationRecord
-  RATINGS = %w[G PG PG-13 R NC-17].freeze
+  has_many :reviews, dependent: :destroy
 
   validates :title, :released_on, :duration, presence: true
   validates :description, length: { minimum: 25 }
@@ -10,6 +10,7 @@ class Movie < ApplicationRecord
     with: /\w+\.(jpg|png)\z/i,
     message: 'Must be a JPG or PNG image.'
   }
+  RATINGS = %w[G PG PG-13 R NC-17].freeze
   validates :rating, inclusion: { in: RATINGS }
 
   def self.released
