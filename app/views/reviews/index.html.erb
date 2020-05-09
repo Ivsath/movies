@@ -3,7 +3,7 @@
 <ul class="reviews">
   <% @reviews.each do |review| %>
     <li>
-      <%= render "shared/stars", percent: stars_as_percent(review) %>
+      <%= render "shared/stars", percent: review.stars_as_percent %>
       <p>
         <%= review.name %>
         <span class="date">
