@@ -32,6 +32,18 @@
     <%= link_to "Write Review", new_movie_review_path(@movie),
                 class: 'review' %>
   </div>
+  <aside>
+    <% if @fans.present? %>
+      <h4>Fans</h4>
+      <ul>
+        <% @fans.each do |user| %>
+          <li>
+            <%= link_to user.name, user %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </aside>
 </section>
 
 <% if current_user_admin? %>
