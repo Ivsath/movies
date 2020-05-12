@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class MoviesController < ApplicationController
+  before_action :require_signin, except: [:index, :show]
+  before_action :require_admin, except: [:index, :show]
+
   add_flash_types(:ok)
 
   def index
