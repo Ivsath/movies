@@ -167,23 +167,23 @@ names = %w[Action Comedy Drama Fantasy Horror Documentary Mystery]
 names.each { |name| Genre.create(name:name) }
 
 [
-    ['Wonder Woman', 'avengers-end-game.png'],
-    ['Wonder Woman', 'avengers-infinity-war.png'],
-    ['Wonder Woman', 'batman.png'],
-    ['Wonder Woman', 'black-panther.png'],
-    ['Wonder Woman', 'captain-marvel.png'],
-    ['Wonder Woman', 'catwoman.png'],
-    ['Wonder Woman', 'fantastic-four.png'],
-    ['Wonder Woman', 'green-lantern.png'],
-    ['Wonder Woman', 'hulk.png'],
-    ['Wonder Woman', 'ironman.png'],
-    ['Wonder Woman', 'spiderman.png'],
-    ['Wonder Woman', 'superman.png'],
+    ['Avengers: Endgame', 'avengers-end-game.png'],
+    ['Avengers: Infinity War', 'avengers-infinity-war.png'],
+    ['Batman', 'batman.png'],
+    ['Black Panther', 'black-panther.png'],
+    ['Captain Marvel', 'captain-marvel.png'],
+    ['Catwoman', 'catwoman.png'],
+    ['Fantastic Four', 'fantastic-four.png'],
+    ['Green Lantern', 'green-lantern.png'],
+    ['Iron Man', 'ironman.png'],
+    ['Spider-Man', 'spiderman.png'],
+    ['Superman', 'superman.png'],
     ['Wonder Woman', 'wonder-woman.png'],
 ].each do |movie_title, file_name|
   m = Movie.find_by(title: movie_title)
   f = File.open(Rails.root.join("app/assets/images/#{file_name}"))
   m.main_image.attach(io: f, filename: file_name)
   m.genre_ids = [1,4]
+  m.save
 end
 
