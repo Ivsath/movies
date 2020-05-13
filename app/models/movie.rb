@@ -18,6 +18,7 @@ class Movie < ApplicationRecord
   validates :description, length: { minimum: 25 }
   validates :total_gross, numericality: { greater_than_or_equal_to: 0 }
   validates :rating, inclusion: { in: RATINGS }
+  validate :acceptable_image
 
   scope :released, -> { where("released_on < ?", Time.now).order("released_on desc") }
 
@@ -54,5 +55,18 @@ class Movie < ApplicationRecord
   def set_slug
     # Only use self when assigning
     self.slug = title.parameterize
+  end
+
+  def acceptable_image
+    return unless main_image.attached?
+
+    unless main_image.blob.byte_size <= 1.megabyte
+      errors.add(:main_image, "is too big")
+    end
+
+    acceptable_types = ["image/jpeg", "image/png"]
+    unless acceptable_types.include?(main_image.content_type)
+      errors.add(:main_image, "Must be a JPEG or PNG")
+    end
   end
 end
