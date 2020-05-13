@@ -12,9 +12,8 @@
 
   <%= f.label :released_on %>
   <%= f.date_field :released_on %>
-  <!--
-  <%= f.date_select :released_on, {}, {class: "date"} %>
-  -->
+
+  <%#= f.date_select :released_on, {}, {class: "date"} %>
 
   <%= f.label :total_gross %>
   <%= f.number_field :total_gross %>
@@ -25,8 +24,8 @@
   <%= f.label :duration %>
   <%= f.text_field :duration %>
 
-  <%= f.label :image_file_name %>
-  <%= f.text_field :image_file_name %>
+  <%#= f.label :image_file_name %>
+  <%#= f.text_field :image_file_name %>
 
   <div class="checkboxes">
     <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) %>
