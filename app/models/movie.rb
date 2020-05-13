@@ -9,6 +9,8 @@ class Movie < ApplicationRecord
   has_many :characterizations, dependent: :destroy
   has_many :genres, through: :characterizations
 
+  has_one_attached :main_image
+
   RATINGS = %w[G PG PG-13 R NC-17].freeze
 
   validates :title, presence: true, uniqueness: true
