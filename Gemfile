@@ -22,8 +22,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap', '~> 4.4', '>= 4.4.1'
 
+# https://github.com/janko/image_processing
+# Must install ImageMagick
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
